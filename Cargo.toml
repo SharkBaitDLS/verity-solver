@@ -1,0 +1,10 @@
+[workspace]
+members = ["models", "server", "website"]
+resolver = "2"
+
+[profile.release]
+lto = true
+
+[profile.release.package.verity-solver-website]
+opt-level = 's'
+
