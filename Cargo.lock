@@ -3,12 +3,24 @@
 version = 3
 
 [[package]]
-name = "models"
+name = "unordered-pair"
+version = "0.2.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "756dde4e9a5b7260a5f9405027847ccc6ff7a624694bda0ca32ffa9091f3d829"
+
+[[package]]
+name = "verity-solver-models"
 version = "0.1.0"
+dependencies = [
+ "unordered-pair",
+]
 
 [[package]]
 name = "verity-solver-server"
 version = "0.1.0"
+dependencies = [
+ "verity-solver-models",
+]
 
 [[package]]
 name = "verity-solver-website"
