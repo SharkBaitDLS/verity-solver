@@ -1052,6 +1052,7 @@ dependencies = [
 name = "verity-solver-website"
 version = "0.1.0"
 dependencies = [
+ "verity-solver-models",
  "yew",
  "yew-router",
 ]
