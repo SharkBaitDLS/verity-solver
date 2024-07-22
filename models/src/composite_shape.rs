@@ -1,12 +1,42 @@
 use crate::Shape;
 
-#[derive(Debug)]
+#[derive(Clone, Copy, Debug)]
 pub struct CompositeShape {
     pub(crate) a: Shape,
     pub(crate) b: Shape,
 }
 
 impl CompositeShape {
+    pub const SPHERE: CompositeShape = CompositeShape {
+        a: Shape::Circle,
+        b: Shape::Circle,
+    };
+
+    pub const CONE: CompositeShape = CompositeShape {
+        a: Shape::Circle,
+        b: Shape::Triangle,
+    };
+
+    pub const PYRAMID: CompositeShape = CompositeShape {
+        a: Shape::Triangle,
+        b: Shape::Triangle,
+    };
+
+    pub const TRIANGULAR_PRISM: CompositeShape = CompositeShape {
+        a: Shape::Triangle,
+        b: Shape::Square,
+    };
+
+    pub const CUBE: CompositeShape = CompositeShape {
+        a: Shape::Square,
+        b: Shape::Square,
+    };
+
+    pub const CYLINDER: CompositeShape = CompositeShape {
+        a: Shape::Square,
+        b: Shape::Circle,
+    };
+
     pub fn new(a: Shape, b: Shape) -> Self {
         Self { a, b }
     }
@@ -35,7 +65,7 @@ impl CompositeShape {
         if !other.contains(&self.a) && !self.contains(&other.a) {
             result.push((other.a, self.a))
         } else if !other.contains(&self.a) && !self.contains(&other.b) {
-            result.push((other.a, self.b))
+            result.push((other.b, self.a))
         }
 
         // The second element of this is an invalid shape

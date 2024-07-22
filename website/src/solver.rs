@@ -4,9 +4,9 @@ use verity_solver_models::{
 
 fn truth(shape: Shape) -> CompositeShape {
     match shape {
-        Shape::Square => (Shape::Circle, Shape::Triangle).into(),
-        Shape::Circle => (Shape::Square, Shape::Triangle).into(),
-        Shape::Triangle => (Shape::Circle, Shape::Square).into(),
+        Shape::Square => CompositeShape::CONE,
+        Shape::Circle => CompositeShape::TRIANGULAR_PRISM,
+        Shape::Triangle => CompositeShape::CYLINDER,
     }
 }
 
@@ -111,9 +111,9 @@ mod tests {
     #[test]
     fn single_swap_case() -> Result<(), String> {
         let outside_state = OutsideStatues {
-            left: CompositeShape::new(Shape::Square, Shape::Triangle),
-            middle: CompositeShape::new(Shape::Triangle, Shape::Circle),
-            right: CompositeShape::new(Shape::Square, Shape::Circle),
+            left: CompositeShape::TRIANGULAR_PRISM,
+            middle: CompositeShape::CONE,
+            right: CompositeShape::CYLINDER,
         };
 
         let inside_state = InsideStatues {
@@ -135,9 +135,9 @@ mod tests {
     #[test]
     fn single_swap_case_skip_completed() -> Result<(), String> {
         let outside_state = OutsideStatues {
-            left: CompositeShape::new(Shape::Square, Shape::Triangle),
-            middle: CompositeShape::new(Shape::Triangle, Shape::Circle),
-            right: CompositeShape::new(Shape::Square, Shape::Circle),
+            left: CompositeShape::TRIANGULAR_PRISM,
+            middle: CompositeShape::CONE,
+            right: CompositeShape::CYLINDER,
         };
 
         let inside_state = InsideStatues {
@@ -159,9 +159,9 @@ mod tests {
     #[test]
     fn two_swap_case() -> Result<(), String> {
         let outside_state = OutsideStatues {
-            left: CompositeShape::new(Shape::Circle, Shape::Triangle),
-            middle: CompositeShape::new(Shape::Triangle, Shape::Square),
-            right: CompositeShape::new(Shape::Square, Shape::Circle),
+            left: CompositeShape::CONE,
+            middle: CompositeShape::TRIANGULAR_PRISM,
+            right: CompositeShape::CYLINDER,
         };
 
         let inside_state = InsideStatues {
@@ -189,9 +189,9 @@ mod tests {
     #[test]
     fn three_swap_case() -> Result<(), String> {
         let outside_state = OutsideStatues {
-            left: CompositeShape::new(Shape::Triangle, Shape::Triangle),
-            middle: CompositeShape::new(Shape::Square, Shape::Square),
-            right: CompositeShape::new(Shape::Circle, Shape::Circle),
+            left: CompositeShape::PYRAMID,
+            middle: CompositeShape::CUBE,
+            right: CompositeShape::SPHERE,
         };
 
         let inside_state = InsideStatues {
@@ -204,11 +204,11 @@ mod tests {
         let expected_solution: Vec<Exchange> = vec![
             UnorderedPair(
                 (Statue::Left, Shape::Triangle),
-                (Statue::Right, Shape::Circle),
+                (Statue::Middle, Shape::Square),
             ),
             UnorderedPair(
                 (Statue::Left, Shape::Triangle),
-                (Statue::Middle, Shape::Square),
+                (Statue::Right, Shape::Circle),
             ),
             UnorderedPair(
                 (Statue::Middle, Shape::Square),
@@ -223,9 +223,9 @@ mod tests {
     #[test]
     fn two_swap_case_with_all_wrong_doubles() -> Result<(), String> {
         let outside_state = OutsideStatues {
-            left: CompositeShape::new(Shape::Triangle, Shape::Triangle),
-            middle: CompositeShape::new(Shape::Square, Shape::Square),
-            right: CompositeShape::new(Shape::Circle, Shape::Circle),
+            left: CompositeShape::PYRAMID,
+            middle: CompositeShape::CUBE,
+            right: CompositeShape::SPHERE,
         };
 
         let inside_state = InsideStatues {
@@ -253,9 +253,9 @@ mod tests {
     #[test]
     fn two_swap_case_with_two_wrong_doubles() -> Result<(), String> {
         let outside_state = OutsideStatues {
-            left: CompositeShape::new(Shape::Triangle, Shape::Triangle),
-            middle: CompositeShape::new(Shape::Square, Shape::Square),
-            right: CompositeShape::new(Shape::Circle, Shape::Circle),
+            left: CompositeShape::PYRAMID,
+            middle: CompositeShape::CUBE,
+            right: CompositeShape::SPHERE,
         };
 
         let inside_state = InsideStatues {
@@ -268,11 +268,11 @@ mod tests {
         let expected_solution: Vec<Exchange> = vec![
             UnorderedPair(
                 (Statue::Left, Shape::Triangle),
-                (Statue::Right, Shape::Circle),
+                (Statue::Middle, Shape::Square),
             ),
             UnorderedPair(
                 (Statue::Left, Shape::Triangle),
-                (Statue::Middle, Shape::Square),
+                (Statue::Right, Shape::Circle),
             ),
         ];
 

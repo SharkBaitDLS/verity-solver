@@ -36,7 +36,12 @@ impl OutsideStatues {
                 self.middle.mut_ref_of(&middle_shape)?,
                 self.right.mut_ref_of(&right_shape)?,
             ),
-            _ => return Err("A statue cannot be swapped with itself".to_owned()),
+            _ => {
+                return Err(format!(
+                    "A statue cannot be swapped with itself: {:?}",
+                    exchange
+                ))
+            }
         }
         Ok(())
     }
