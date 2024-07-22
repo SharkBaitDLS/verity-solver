@@ -12,11 +12,9 @@ jobs:
       - uses: actions/checkout@v3
       - uses: dtolnay/rust-toolchain@stable
         with:
-      # TODO: Uncomment once the web package is set up
-      #   targets: wasm32-unknown-unknown
+          targets: wasm32-unknown-unknown
           components: clippy, rustfmt
-    # TODO: Uncomment once the web package is set up
-    # - uses: jetli/trunk-action@v0.4.0
+      - uses: jetli/trunk-action@v0.4.0
       - name: Cache Cargo registry
         uses: actions/cache@v3
         continue-on-error: false
@@ -36,6 +34,5 @@ jobs:
         run: cargo clippy -- -D warnings --no-deps
       - name: Test
         run: cargo test
-    # TODO: Uncomment once the web package is set up
-    # - name: Verify Webpack
-    #   run: trunk build website/index.html
+      - name: Verify Webpack
+        run: trunk build website/index.html
