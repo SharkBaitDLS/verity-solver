@@ -1,0 +1,61 @@
+.hex-segment {
+    transition: all 0.25s
+}
+
+.hex-segment:disabled {
+    cursor: not-allowed;
+}
+
+.hex-segment-deselected {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(123, 123, 123);
+    opacity: 75%;
+}
+
+.hex-segment-selected {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(232, 232, 232);
+    color: rgb(0, 158, 63);
+    opacity: 75%;
+}
+
+.hex-segment-deselected:enabled:active,
+.hex-segment-selected:enabled:active {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    bottom: -5px;
+    left: 0;
+    background-color: rgb(0, 147, 188);
+    color: rgba(192, 192, 0, 0.952);
+    opacity: 75%;
+}
+
+.hex-segment-top {
+    clip-path: polygon(12% 25%, 50% 2%, 88% 25%, 50% 48%);
+    -webkit-clip-path: polygon(12% 25%, 50% 2%, 88% 25%, 50% 48%);
+    shape-outside: polygon(12% 25%, 50% 2%, 88% 25%, 50% 48%);
+    -wekbit-shape-outside: polygon(12% 25%, 50% 2%, 88% 25%, 50% 48%);
+}
+
+.hex-segment-left {
+    clip-path: polygon(48% 51%, 10% 28%, 10% 68.15%, 48% 91%);
+    -webkit-clip-path: polygon(48% 51%, 10% 28%, 10% 68.15%, 48% 91%);
+    shape-outside: polygon(48% 51%, 10% 28%, 10% 68.15%, 48% 91%);
+    -webkit-shape-outside: polygon(48% 51%, 10% 28%, 10% 68.15%, 48% 91%);
+}
+
+.hex-segment-right {
+    -webkit-clip-path: polygon(52% 51%, 90% 28%, 90% 68.15%, 52% 91%);
+    clip-path: polygon(52% 51%, 90% 28%, 90% 68.15%, 52% 91%);
+    -webkit-shape-outside: polygon(52% 51%, 90% 28%, 90% 68.15%, 52% 91%);
+    shape-outside: polygon(52% 51%, 90% 28%, 90% 68.15%, 52% 91%);
+}

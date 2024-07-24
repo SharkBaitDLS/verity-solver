@@ -1,5 +1,8 @@
 use yew::{function_component, html, Html, Renderer};
 
+use crate::shape_picker::ShapePicker;
+
+mod shape_picker;
 #[allow(dead_code)]
 mod solver;
 
@@ -9,17 +12,7 @@ fn App() -> Html {
         <div class="main is-flex is-flex-direction-column">
             <main>
                 <p>{ "Hello, verity solver! Have some mocked-up buttons!" }</p>
-                <div class="hex-container">
-                    <div class="hex-border">
-                        <button class="hex-segment-active hex-segment-top"/>
-                    </div>
-                    <div class="hex-border">
-                        <button class="hex-segment-inactive hex-segment-left"/>
-                    </div>
-                    <div>
-                        <button class="hex-segment-clicked hex-segment-right"/>
-                    </div>
-                </div>
+                <ShapePicker/>
             </main>
             <footer class="footer mt-auto">
                 <div class="content has-text-centered">
@@ -34,5 +27,6 @@ fn App() -> Html {
 }
 
 fn main() {
+    wasm_logger::init(wasm_logger::Config::default());
     Renderer::<App>::new().render();
 }

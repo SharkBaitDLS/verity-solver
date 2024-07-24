@@ -1,0 +1,32 @@
+// TODO: pixel-perfect align/size these
+
+.hex-text {
+    transition: all 0.25s;
+    opacity: 100%;
+}
+
+.hex-text-disabled {
+    transition: all 0.25s;
+    opacity: 0%;
+}
+
+.hex-text-square {
+    position: absolute;
+    font-size: 85px;
+    left: 37%;
+    top: -6%;
+}
+
+.hex-text-circle {
+    position: absolute;
+    font-size: 98px;
+    left: 13.5%;
+    bottom: 13.5%;
+}
+
+.hex-text-triangle {
+    position: absolute;
+    font-size: 60px;
+    right: 14%;
+    bottom: 23.5%;
+}

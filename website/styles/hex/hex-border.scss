@@ -1,0 +1,8 @@
+.hex-border {
+    filter: drop-shadow(-1px 6px 3px light-dark(rgba(50, 50, 0, 0.5), rgba(186, 186, 186, 0.5)));
+    transition: all 0.25s
+}
+
+.hex-border:enabled:active {
+    filter: none;
+}
