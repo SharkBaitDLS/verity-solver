@@ -12,7 +12,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: rgb(123, 123, 123);
+    background-color: light-dark(rgb(150, 150, 150), rgb(123, 123, 123));
     opacity: 75%;
 }
 
@@ -22,8 +22,8 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: rgb(232, 232, 232);
-    color: rgb(0, 158, 63);
+    background-color: light-dark(rgb(220, 220, 220), rgb(232, 232, 232));
+    color: light-dark(rgb(0, 158, 225), rgb(0, 158, 225));
     opacity: 75%;
 }
 
@@ -34,8 +34,6 @@
     right: 0;
     bottom: -5px;
     left: 0;
-    background-color: rgb(0, 147, 188);
-    color: rgba(192, 192, 0, 0.952);
     opacity: 75%;
 }
 

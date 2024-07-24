@@ -55,7 +55,7 @@ pub fn ButtonSegment(props: &SegmentProps) -> Html {
 
     html! {
         <div>
-            <div class="hex-border">
+            <div class={format!("hex-border {}", if disabled { "" } else { "hex-border-active"})}>
                 <button {disabled} {onclick} class={button_classes}>
                     <p class={format!("{} {}", text_class, if disabled { "hex-text-disabled" } else { "hex-text" })}>
                     {

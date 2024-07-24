@@ -12,7 +12,8 @@ fn App() -> Html {
         <div class="main is-flex is-flex-direction-column">
             <main>
                 <p>{ "Hello, verity solver! Have some mocked-up buttons!" }</p>
-                <ShapePicker/>
+                <ShapePicker multi_shape={true}/>
+                <ShapePicker multi_shape={false}/>
             </main>
             <footer class="footer mt-auto">
                 <div class="content has-text-centered">

@@ -3,6 +3,6 @@
     transition: all 0.25s
 }
 
-.hex-border:enabled:active {
+.hex-border:active.hex-border-active {
     filter: none;
 }

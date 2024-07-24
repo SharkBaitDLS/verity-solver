@@ -1,12 +1,15 @@
 // TODO: pixel-perfect align/size these
 
 .hex-text {
-    transition: all 0.25s;
+    transition-property: opacity;
+    transition-duration: 0.25s;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
     opacity: 100%;
 }
 
 .hex-text-disabled {
-    transition: all 0.25s;
     opacity: 0%;
 }
 
