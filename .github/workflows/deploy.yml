@@ -10,14 +10,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: wasm32-unknown-unknown
           components: clippy, rustfmt
-      - uses: jetli/trunk-action@v0.4.0
+      - uses: jetli/trunk-action@v0.5.0
       - name: Cache Cargo registry
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         continue-on-error: false
         with:
           path: |
@@ -25,7 +27,7 @@ jobs:
             ~/.cargo/git
           key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
       - name: Cache build artifacts
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: target
           key: ${{ runner.os }}-cargo-build-artifacts-${{ hashFiles('**/Cargo.lock') }}
@@ -40,7 +42,7 @@ jobs:
       - name: Webpack
         run: trunk build --release website/index.html
       - name: Upload WASM
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: dist
           path: website/dist
@@ -55,7 +57,7 @@ jobs:
     needs: build
     steps:
       - name: Download WASM
-        uses: actions/download-artifact@v1
+        uses: actions/download-artifact@v4
         with:
           name: dist
       - name: Upload to S3
