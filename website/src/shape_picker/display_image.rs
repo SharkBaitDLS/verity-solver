@@ -68,7 +68,7 @@ impl Component for DisplayImage {
             }
         } else {
             html! {
-                <img {class} />
+                <img class="display-image-invis" />
             }
         }
     }
