@@ -1,0 +1,18 @@
+.display-hex {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: light-dark(rgb(223, 223, 223), rgb(95, 95, 95));
+    clip-path: polygon(10% 25%, 50% 2%, 90% 25%, 90% 67%, 50% 92%, 10% 67%);
+    -webkit-clip-path: polygon(10% 25%, 50% 2%, 90% 25%, 90% 67%, 50% 92%, 10% 67%);
+}
+
+.display-hex.display-outer {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background: light-dark(rgb(123, 123, 123), rgb(0, 0, 0));
+}

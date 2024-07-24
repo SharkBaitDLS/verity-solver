@@ -1,6 +1,7 @@
-use std::rc::Rc;
+use std::{rc::Rc, vec::IntoIter};
 
-use verity_solver_models::Shape;
+use itertools::Itertools;
+use verity_solver_models::{CompositeShape, Shape};
 use yew::Reducible;
 
 use super::button_segment::ButtonState;
@@ -20,7 +21,6 @@ impl ShapeState {
     }
 }
 
-/// State tuples are (selected, disabled)
 #[derive(Copy, Clone, Debug, PartialEq)]
 pub struct PickerState {
     multi_shape: bool,
@@ -37,6 +37,36 @@ impl PickerState {
             circle: ShapeState::new(),
             triangle: ShapeState::new(),
         }
+    }
+
+    pub fn get_simple(&self) -> Option<Shape> {
+        self.into_iter()
+            .find(|(_shape, state)| state.selected)
+            .map(|(shape, _state)| shape)
+    }
+
+    pub fn get_composite(&self) -> Option<CompositeShape> {
+        self.into_iter()
+            .filter(|(_shape, state)| state.selected)
+            .map(|(shape, _state)| shape)
+            .collect_tuple::<(Shape, Shape)>()
+            .map(|tuple| tuple.into())
+            .or(self.get_simple().map(|shape| (shape, shape).into()))
+    }
+}
+
+impl IntoIterator for &PickerState {
+    type Item = (Shape, ShapeState);
+
+    type IntoIter = IntoIter<Self::Item>;
+
+    fn into_iter(self) -> Self::IntoIter {
+        vec![
+            (Shape::Square, self.square),
+            (Shape::Circle, self.circle),
+            (Shape::Triangle, self.triangle),
+        ]
+        .into_iter()
     }
 }
 

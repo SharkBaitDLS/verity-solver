@@ -2,7 +2,7 @@
 
 .hex-text {
     transition-property: opacity;
-    transition-duration: 0.25s;
+    transition-duration: 0.5s;
     user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -10,6 +10,7 @@
 }
 
 .hex-text-disabled {
+    transition-duration: 0.5s;
     opacity: 0%;
 }
 

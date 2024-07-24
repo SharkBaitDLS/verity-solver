@@ -4,9 +4,15 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+gloo-timers = {version = "0.3", features = ["futures"] }
+itertools = "0.13"
 log = "0.4"
 verity-solver-models = { path = "../models" }
 wasm-logger = "0.2"
 web-sys = { version = "0.3", features = ["MouseEvent"] }
 yew = { version = "0.21", features = ["csr"] }
-yew-router = "0.18"
+
+[profile.release]
+panic = 'abort'
+codegen-units = 1
+opt-level = 'z'
