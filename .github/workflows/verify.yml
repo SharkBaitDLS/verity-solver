@@ -35,4 +35,4 @@ jobs:
       - name: Test
         run: cargo test
       - name: Verify Webpack
-        run: trunk build website/index.html
+        run: trunk build --config=website/Cargo.toml index.html

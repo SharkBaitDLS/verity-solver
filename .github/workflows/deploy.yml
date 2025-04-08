@@ -40,7 +40,7 @@ jobs:
       - name: Build
         run: cargo build --release
       - name: Webpack
-        run: trunk build --release website/index.html
+        run: trunk build --minify=true --release=true --config=website/Cargo.toml index.html
       - name: Upload WASM
         uses: actions/upload-artifact@v4
         with:
